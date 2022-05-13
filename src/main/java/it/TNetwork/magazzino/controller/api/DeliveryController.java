@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,8 @@ import it.TNetwork.magazzino.model.Order;
 import it.TNetwork.magazzino.service.IDeliveryService;
 
 @RestController
-@RequestMapping("delivery")
+@RequestMapping("/delivery")
+@CrossOrigin
 public class DeliveryController {
 	
 	@Autowired
@@ -32,15 +34,17 @@ public class DeliveryController {
 		return this.deliveryService.insert(delivery);
 	}
 	
-	@GetMapping (value = "/", produces = "applications/json")
+	//se aggiungo ( produces = "applications/json") --> mi da ERROR 500 se faccio la query )
+	@GetMapping (value = "/")
 	public List<Delivery> getAll () {
-		
+
 		return this.deliveryService.getAll();
 	}
 	
 	@GetMapping (value = "/order" )
-	public List<Order> getOrders ( @RequestBody Delivery delivery) {
-		return this.deliveryService.getOrders(delivery);
+	public List<Order> getOrders ( @RequestBody String idDelivery) {
+		
+		return this.deliveryService.getOrders(idDelivery);
 	}
 	
 	@GetMapping(value = "/{deliveryNumber}", produces = "application/json")
@@ -51,14 +55,18 @@ public class DeliveryController {
 	
 	
 	@DeleteMapping (value = "/")
-	public Delivery remove (@RequestBody Delivery delivery) {
+	public Delivery remove (@RequestBody String idDelivery) {
 		
-		return this.deliveryService.remove (delivery);
+		return this.deliveryService.remove (idDelivery);
 	}
 	
 	
 	
-	
+	//prova per JWT
+	@GetMapping("API")
+	public String provaAPI() {	
+		return "API test";
+	}
 	
 
 }

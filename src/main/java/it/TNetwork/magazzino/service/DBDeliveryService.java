@@ -1,6 +1,7 @@
 package it.TNetwork.magazzino.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,42 +18,54 @@ public class DBDeliveryService implements IDeliveryService {
 
 	@Override
 	public Delivery insert(Delivery delivery) {
-		
+
 		return this.deliveryRepo.save(delivery);
 	}
 
 	@Override
 	public List<Delivery> getAll() {
 		
-		return this.deliveryRepo.findAll();
+		System.out.println("Sto nel - DBDeliveryService - @PosMapping --> getAll()");
+		
+		List<Delivery>  temp = this.deliveryRepo.findAll();
+		
+		System.out.println("temp" +temp);
+		
+		return temp;
 	}
 
 	@Override
 	public Delivery getByDeliveryNumber(String deliveryNumber) {
 		
-		return this.deliveryRepo.getByDeliveryNumber(deliveryNumber);
+		Delivery temp =  this.deliveryRepo.getByDeliveryNumber(deliveryNumber);
+		
+		return temp;
 	}
 	
 
 	@Override
-	public List<Order> getOrders(Delivery delivery) {
+	public List<Order> getOrders(String idDelivery) {
 		
-		return delivery.getOrdiniAssociati();
+//		Delivery delivery = this.deliveryRepo.findById(idDelivery).get();
+
+	return null;	
 	}
 
 	@Override
-	public Delivery remove(Delivery delivery) {
+	public Delivery remove(String idDelivery) {
 		
-		Delivery deletedDelivery = this.deliveryRepo.getByDeliveryNumber(delivery.getnDelivery());
-
+		Optional<Delivery> temp = deliveryRepo.findById(idDelivery);
 		
-		if ( deletedDelivery != null ) {
-			this.deliveryRepo.delete(delivery);
-			return deletedDelivery;
+		Delivery deliveryToDelete = temp.get();
+		
+		if ( deliveryToDelete != null ) {
+			deliveryRepo.deleteById(idDelivery);
+			return deliveryToDelete;
 		}
 		
 		return null;
-		
 	}
+
+
 
 }

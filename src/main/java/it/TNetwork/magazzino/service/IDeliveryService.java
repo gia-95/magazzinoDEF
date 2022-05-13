@@ -13,8 +13,8 @@ public interface IDeliveryService  {
 
 	public Delivery getByDeliveryNumber(String deliveryNumber);
 	
-	public List<Order> getOrders( Delivery delivery);
+	public List<Order> getOrders( String idDelivery);
 
-	public Delivery remove(Delivery delivery);
+	public Delivery remove(String idDelivery);
 
 }

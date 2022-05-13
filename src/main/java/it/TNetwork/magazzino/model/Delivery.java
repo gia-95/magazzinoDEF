@@ -3,10 +3,14 @@ package it.TNetwork.magazzino.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Delivery {
+	
+	@Id
+	private String id;
 
 	private String dataConsegna;
 	
@@ -110,6 +114,14 @@ public class Delivery {
 
 	public void setOrdiniAssociati(List<Order> ordiniAssociati) {
 		this.ordiniAssociati = ordiniAssociati;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	

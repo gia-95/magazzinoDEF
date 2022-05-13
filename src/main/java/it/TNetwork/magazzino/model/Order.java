@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Order {
 	
+	private String id;
+	
 	private int n_ordine;
 	
 	private String spedizioniere;
@@ -28,7 +30,6 @@ public class Order {
 		this.spedizioniere = spedizioniere;
 	}
 
-	
 	public String getDataConsegna() {
 		return dataConsegna;
 	}
@@ -36,6 +37,15 @@ public class Order {
 	public void setDataConsegna(String dataConsegna) {
 		this.dataConsegna = dataConsegna;
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	
 
 }

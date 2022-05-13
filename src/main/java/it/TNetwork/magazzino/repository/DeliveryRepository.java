@@ -11,5 +11,6 @@ public interface DeliveryRepository extends MongoRepository<Delivery, String>{
 	
 	@Query(value = "{ 'nDelivery': ?0}")
 	Delivery getByDeliveryNumber(String deliveryNumber);
+
 	
 }
