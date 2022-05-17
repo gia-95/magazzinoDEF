@@ -8,34 +8,34 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Delivery {
-	
+
 	@Id
 	private String id;
 
 	private String dataConsegna;
-	
+
 	private String dataEmissione;
 
 	private String nDelivery;
-	
+
 	private int numeroColli;
-	
+
 	private String note;
-	
+
 	private double quantita;
-	
+
 	private String unitaMisura;
-	
+
 	private String spedizioniere;
-	
-	private String  tipologiaStatoConsegna;
-	
+
+	private String tipologiaStatoConsegna;
+
 	private List<Order> ordiniAssociati;
-	
-	public Delivery () {
+
+	public Delivery() {
 		this.ordiniAssociati = new ArrayList<Order>();
 	}
-	
+
 	public String getDataConsegna() {
 		return dataConsegna;
 	}
@@ -115,7 +115,7 @@ public class Delivery {
 	public void setOrdiniAssociati(List<Order> ordiniAssociati) {
 		this.ordiniAssociati = ordiniAssociati;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -123,8 +123,5 @@ public class Delivery {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	
-	
 
 }

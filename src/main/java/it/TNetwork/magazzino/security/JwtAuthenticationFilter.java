@@ -56,6 +56,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         // Authenticate user
         Authentication auth = authenticationManager.authenticate(authenticationToken);
+        
 
         return auth;
 	}

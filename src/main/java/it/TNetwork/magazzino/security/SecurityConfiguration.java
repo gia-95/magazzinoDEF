@@ -1,5 +1,6 @@
 package it.TNetwork.magazzino.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -11,6 +12,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import it.TNetwork.magazzino.repository.UserRepository;
 import it.TNetwork.magazzino.service.UserPrincipalDetailsService;
@@ -18,6 +21,7 @@ import it.TNetwork.magazzino.service.UserPrincipalDetailsService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
 	
 	private UserPrincipalDetailsService userPrincipalDetailsService;
 	private UserRepository userRepository;
@@ -47,6 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//			.and()
+//			.cors()
 			.and()
 			.addFilter(new JwtAuthenticationFilter(authenticationManager()))
 			.addFilter(new JwtAuthorizationFilter(authenticationManager(), this.userRepository))
@@ -79,8 +85,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		*/
 	}
-	
-	
+
 	
 	@Bean
 	DaoAuthenticationProvider authenticationProvider () {
@@ -95,4 +100,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	PasswordEncoder passwordEncoder () {
 		return new BCryptPasswordEncoder();
 	}
+	
+
 }

@@ -28,14 +28,14 @@ public class DeliveryController {
 	
 	
 	//se aggiungo ( produces = "applications/json") --> mi da ERROR 500 se faccio la query )
-	@PostMapping (value = "/")
+	@PostMapping (value = "/addDelivery")
 	public Delivery insert ( @RequestBody Delivery delivery ) {
 		
 		return this.deliveryService.insert(delivery);
 	}
 	
 	//se aggiungo ( produces = "applications/json") --> mi da ERROR 500 se faccio la query )
-	@GetMapping (value = "/")
+	@GetMapping (value = "/getDelivery")
 	public List<Delivery> getAll () {
 
 		return this.deliveryService.getAll();
@@ -49,7 +49,7 @@ public class DeliveryController {
 	
 	@GetMapping(value = "/{deliveryNumber}", produces = "application/json")
 	public Delivery getByDeliveryNumber(@PathVariable String deliveryNumber) {
-
+		
 		return this.deliveryService.getByDeliveryNumber(deliveryNumber);
 	}
 	
