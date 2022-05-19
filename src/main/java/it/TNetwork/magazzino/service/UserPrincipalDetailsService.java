@@ -1,5 +1,5 @@
 package it.TNetwork.magazzino.service;
-
+/*
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import it.TNetwork.magazzino.model.User;
 import it.TNetwork.magazzino.repository.UserRepository;
 import it.TNetwork.magazzino.security.UserPrincipal;
+*/
 
-@Service
-public class UserPrincipalDetailsService implements UserDetailsService {
 
+//@Service
+public class UserPrincipalDetailsService {//implements UserDetailsService {
+/*
 	private UserRepository userRepository;
 	
 	public UserPrincipalDetailsService (UserRepository userRepository) {
@@ -27,5 +29,6 @@ public class UserPrincipalDetailsService implements UserDetailsService {
 		
 		return userPrincipal;
 	}
+	*/
 
 }

@@ -1,4 +1,4 @@
-package it.TNetwork.magazzino.controller.api;
+package it.TNetwork.magazzino.controller.rest;
 
 import java.util.List;
 

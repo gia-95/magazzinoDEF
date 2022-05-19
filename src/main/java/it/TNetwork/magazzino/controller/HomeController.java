@@ -1,4 +1,4 @@
-package it.TNetwork.magazzino.controller2;
+package it.TNetwork.magazzino.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
