@@ -16,7 +16,7 @@ public class Delivery {
 
 	private String dataEmissione;
 
-	private String nDelivery;
+	private String numeroConsegna;
 
 	private int numeroColli;
 
@@ -53,11 +53,11 @@ public class Delivery {
 	}
 
 	public String getnDelivery() {
-		return nDelivery;
+		return numeroConsegna;
 	}
 
 	public void setnDelivery(String nDelivery) {
-		this.nDelivery = nDelivery;
+		this.numeroConsegna = nDelivery;
 	}
 
 	public int getNumeroColli() {

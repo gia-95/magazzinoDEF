@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.TNetwork.magazzino.model.Delivery;
 import it.TNetwork.magazzino.model.Order;
+import it.TNetwork.magazzino.model.response.BaseResponse;
 import it.TNetwork.magazzino.repository.OrderRepository;
 
 @Service("mainOrderService")
@@ -15,21 +17,33 @@ public class DBOrderService implements IOrderService {
 	private OrderRepository orderRepo;
 
 	@Override
-	public Order insert(Order order) {
+	public BaseResponse insert(Order order) {
 
-		return this.orderRepo.save(order);
+		BaseResponse response = null;
+
+		Order orderSaved = this.orderRepo.save(order);
+
+		if (orderSaved != null) {
+			response = new BaseResponse(200, orderSaved, "Inserimento avvenuto correttamente");
+		} else {
+			// crea l'oggetto errore da mandare - settalo nella BaseResponse
+		}
+
+		return response;
 	}
 
 	@Override
-	public List<Order> getAll() {
-		
-		return this.orderRepo.findAll();
+	public BaseResponse getAll() {
+
+		return new BaseResponse(200, this.orderRepo.findAll(), "Ordini trovati");
 	}
 
 	@Override
-	public List<Order> getByOrderNumber(int orderNumber) {
+	public BaseResponse getByOrderNumber(int orderNumber) {
 
-		return this.orderRepo.getByOrderNumber(orderNumber);
+		List<Order> orders = this.orderRepo.getByOrderNumber(orderNumber);
+
+		return new BaseResponse(200, orders, "Ordini trovati con 'numeroOrdine' specificato.");
 	}
 
 }

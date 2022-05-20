@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.TNetwork.magazzino.model.Order;
+import it.TNetwork.magazzino.model.response.BaseResponse;
 import it.TNetwork.magazzino.service.IOrderService;
 
 @RestController
@@ -22,24 +23,22 @@ public class OrderController {
 	@Qualifier("mainOrderService")
 	private IOrderService orderService;
 
-	@PostMapping(value = "/", produces = "application/json")
-	public Order insert(@RequestBody Order ordine) {
+	@PostMapping(value = "/addOrder", produces = "application/json")
+	public BaseResponse insert(@RequestBody Order ordine) {
 
 		return this.orderService.insert(ordine);
 	}
 
-	@GetMapping(value = "/")
-	public List<Order> getAll() {
+	@GetMapping(value = "/getOrders")
+	public BaseResponse getAll() {
 
-		List<Order> ordini = this.orderService.getAll();
-		return ordini;
+		return this.orderService.getAll();
 	}
 
-	@GetMapping(value = "/{orderNumber}", produces = "application/json")
-	public List<Order> getByNConsegna(@PathVariable int orderNumber) {
+	@GetMapping(value = "/{numeroOrdine}", produces = "application/json")
+	public BaseResponse getByNumeroOrdine(@PathVariable int numeroOrdine) {
 
-		return this.orderService.getByOrderNumber(orderNumber);
+		return this.orderService.getByOrderNumber(numeroOrdine);
 	}
-	
 
 }

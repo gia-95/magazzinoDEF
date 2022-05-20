@@ -7,19 +7,26 @@ public class Order {
 	
 	private String id;
 	
-	private int n_ordine;
+	private int numeroOrdine;
 	
 	private String spedizioniere;
 	
 	private String dataConsegna;
-	
 
-	public int getN_ordine() {
-		return n_ordine;
+	public String getId() {
+		return id;
 	}
 
-	public void setN_ordine(int n_ordine) {
-		this.n_ordine = n_ordine;
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getNumeroOrdine() {
+		return numeroOrdine;
+	}
+
+	public void setNumeroOrdine(int numeroOrdine) {
+		this.numeroOrdine = numeroOrdine;
 	}
 
 	public String getSpedizioniere() {
@@ -38,13 +45,7 @@ public class Order {
 		this.dataConsegna = dataConsegna;
 	}
 	
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	
 

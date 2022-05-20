@@ -11,7 +11,7 @@ import it.TNetwork.magazzino.model.Order;
 @Repository
 public interface OrderRepository extends MongoRepository<Order, String> {
 
-	@Query(value = "{ 'n_ordine': ?0}")
+	@Query(value = "{ 'numeroOrdine': ?0}")
 	List<Order> getByOrderNumber(int orderNumber);
 
 }

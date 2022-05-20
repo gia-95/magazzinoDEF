@@ -4,17 +4,18 @@ import java.util.List;
 
 import it.TNetwork.magazzino.model.Delivery;
 import it.TNetwork.magazzino.model.Order;
+import it.TNetwork.magazzino.model.response.BaseResponse;
 
 public interface IDeliveryService  {
 	
-	public Delivery insert(Delivery delivery);
+	public BaseResponse insert(Delivery delivery);
 
-	public List<Delivery> getAll();
+	public BaseResponse getAll();
 
-	public Delivery getByDeliveryNumber(String deliveryNumber);
+	public BaseResponse getByDeliveryNumber(String deliveryNumber);
 	
-	public List<Order> getOrders( String idDelivery);
+	public BaseResponse getOrders( String idDelivery);
 
-	public Delivery remove(String idDelivery);
+	public BaseResponse remove(String idDelivery);
 
 }

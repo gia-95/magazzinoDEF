@@ -3,13 +3,14 @@ package it.TNetwork.magazzino.service;
 import java.util.List;
 
 import it.TNetwork.magazzino.model.Order;
+import it.TNetwork.magazzino.model.response.BaseResponse;
 
 public interface IOrderService {
 
-	public Order insert(Order order);
+	public BaseResponse insert(Order order);
 
-	public List<Order> getAll();
+	public BaseResponse getAll();
 
-	public List<Order> getByOrderNumber(int orderNumber);
+	public BaseResponse getByOrderNumber(int orderNumber);
 
 }
