@@ -70,7 +70,7 @@ public class TokenFilter implements Filter {
 			} catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException
 					| IllegalArgumentException | IOException | URISyntaxException  e) {
 				// TODO Auto-generated catch block
-				System.out.println("Token non presente.");
+				System.out.println("Token non presente o scaduto.");
 				e.printStackTrace();
 			}
 

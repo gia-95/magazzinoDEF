@@ -16,7 +16,7 @@ public class Delivery {
 
 	private String dataEmissione;
 
-	private String numeroConsegna;
+	private int numeroConsegna;
 
 	private int numeroColli;
 
@@ -52,12 +52,12 @@ public class Delivery {
 		this.dataEmissione = dataEmissione;
 	}
 
-	public String getnDelivery() {
+	public int getNumeroConsegna() {
 		return numeroConsegna;
 	}
 
-	public void setnDelivery(String nDelivery) {
-		this.numeroConsegna = nDelivery;
+	public void setNumeroConsegna(int numeroConsegna) {
+		this.numeroConsegna = numeroConsegna;
 	}
 
 	public int getNumeroColli() {
@@ -122,6 +122,15 @@ public class Delivery {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Order getOrderById(Order o) {
+		
+		for (Order order : this.ordiniAssociati) {
+			if (order.getId().equals(o.getId()))
+				return order;
+		}
+		return null;
 	}
 
 }

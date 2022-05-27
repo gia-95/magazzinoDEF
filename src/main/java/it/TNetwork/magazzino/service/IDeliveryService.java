@@ -18,4 +18,8 @@ public interface IDeliveryService  {
 
 	public BaseResponse remove(String idDelivery);
 
+	public BaseResponse getByDeliveryID(String deliveryID);
+
+	public BaseResponse removeOrder(String idDelivery, Order order);
+
 }

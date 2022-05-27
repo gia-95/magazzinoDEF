@@ -99,4 +99,46 @@ public class DBDeliveryService implements IDeliveryService {
 		return response;
 	}
 
+
+	@Override
+	public BaseResponse getByDeliveryID(String deliveryID) {
+
+		BaseResponse response = null;
+
+		Delivery deliveryResponse = this.deliveryRepo.findById(deliveryID).get();
+
+		if (deliveryResponse != null) {
+			response = new BaseResponse(200, deliveryResponse, "Delivery trovata correttamente, restituita");
+		} else {
+			// crea l'errore e gfestiscilo - riportalo nella risposta
+		}
+
+		return response;
+	}
+
+
+	@Override
+	public BaseResponse removeOrder(String idDelivery, Order order) {
+		
+		Delivery delivery = this.deliveryRepo.findById(idDelivery).get();
+		
+		System.out.println(delivery.getOrdiniAssociati());
+		
+		delivery.getOrdiniAssociati().remove( delivery.getOrderById(order) );
+		
+		System.out.println(delivery.getOrdiniAssociati());
+		
+		Delivery deliverySaved = this.deliveryRepo.save(delivery);
+
+		if (deliverySaved != null) {
+			
+			return new BaseResponse(200, deliverySaved, "Modifica della Delivery (eliminazione dell'ordine) avvenuta correttamente");
+		} else {
+
+			return new BaseResponse(200, null, "Modifica della Delivery (eliminazione dell'ordine) NON avvenuta");
+
+		}
+
+	}
+
 }

@@ -49,8 +49,6 @@ public class AuthService {
 			if (utente != null) {
 				// creo token
 				String token = this.tokenUtil.createJWT(login.getUsername());
-				
-
 
 				BasicBSONObject obj=new BasicBSONObject();    
 				obj.put("token",token);    
@@ -59,9 +57,7 @@ public class AuthService {
 				response = new LoginResponseSucces("", 200, obj);
 				
 			} else {
-				
 				response = new LoginResponse("Username o password errati", 401);
-
 			}
 		}
 		return response;

@@ -8,7 +8,7 @@ import it.TNetwork.magazzino.model.Delivery;
 
 public class test {
 	
-	
+	/*
 	
 	public static void main(String[] args) {
 		
@@ -48,5 +48,6 @@ public class test {
 		System.out.println(temp);
 		
 	}
+	*/
 
 }

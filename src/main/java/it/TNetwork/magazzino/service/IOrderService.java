@@ -13,4 +13,12 @@ public interface IOrderService {
 
 	public BaseResponse getByOrderNumber(int orderNumber);
 
+	public BaseResponse getOrderById(String idOrdine);
+
+	public BaseResponse removeById(String idOrder);
+
+	public BaseResponse updateOrder(Order orderToUpdate);
+
+	public BaseResponse getOrderWithoutDelivery();
+
 }
