@@ -14,16 +14,17 @@ import it.TNetwork.magazzino.service.AuthService;
 @RestController
 @RequestMapping("auth")
 public class AuthController {
-	
+
 	@Autowired
 	private AuthService authService;
-	
 
 	@PostMapping(value = "/", produces = "application/json")
 	public LoginResponse auth(@RequestBody LoginRequest login) throws Exception {
+
+
+
 		LoginResponse loginResponse = this.authService.auth(login);
 		return loginResponse;
 	}
-	
-	
+
 }

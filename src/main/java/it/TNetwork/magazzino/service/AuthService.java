@@ -47,6 +47,11 @@ public class AuthService {
 			// se recupero utente creo un token di autenticazione, altrimenti lancio
 			// exception not authorized
 			if (utente != null) {
+				
+				char[] arr = utente.getUsername().toCharArray();
+				arr[0] = Character.toUpperCase(arr[0]);
+				utente.setUsername(new String(arr));
+				
 				// creo token
 				String token = this.tokenUtil.createJWT(login.getUsername());
 
