@@ -14,7 +14,7 @@ public interface OrderRepository extends MongoRepository<Order, String> {
 	@Query(value = "{ 'numeroOrdine': ?0}")
 	List<Order> getByOrderNumber(int orderNumber);
 	
-	@Query(value = "{ 'consegna': null}")
+	@Query(value = "{ 'boolConsegna': false}")
 	List<Order> getOrderWithoutDelivery ();
 
 }

@@ -84,6 +84,12 @@ public class DeliveryController {
 		return this.deliveryService.insert(delivery);
 	}
 	
+	@PutMapping(value = "/addOrder/{deliveryId}", produces = "application/json")
+	public BaseResponse addOrderToDelivery(@RequestHeader("userId") String userId ,
+			@PathVariable String deliveryId, @RequestBody Order order) {
+		
+		return this.deliveryService.addOrderToDelivery(deliveryId, order);
+	}
 	
 
 }

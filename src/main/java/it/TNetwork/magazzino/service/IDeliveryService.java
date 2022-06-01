@@ -22,4 +22,6 @@ public interface IDeliveryService  {
 
 	public BaseResponse removeOrder(String idDelivery, Order order);
 
+	public BaseResponse addOrderToDelivery(String idDelivery, Order order);
+
 }

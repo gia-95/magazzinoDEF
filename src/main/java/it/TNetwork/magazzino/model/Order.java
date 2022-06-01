@@ -22,6 +22,16 @@ public class Order {
 	private String provenienza;
 	
 	private Delivery consegna;
+	
+	private Boolean boolConsegna;
+
+	public Boolean getBoolConsegna() {
+		return boolConsegna;
+	}
+
+	public void setBoolConsegna(Boolean boolConsegna) {
+		this.boolConsegna = boolConsegna;
+	}
 
 	public String getId() {
 		return id;

@@ -11,6 +11,7 @@ import it.TNetwork.magazzino.model.Delivery;
 import it.TNetwork.magazzino.model.Order;
 import it.TNetwork.magazzino.model.response.BaseResponse;
 import it.TNetwork.magazzino.repository.DeliveryRepository;
+import it.TNetwork.magazzino.repository.OrderRepository;
 
 @Service("mainDeliveryService")
 public class DBDeliveryService implements IDeliveryService {
@@ -18,6 +19,8 @@ public class DBDeliveryService implements IDeliveryService {
 	@Autowired
 	private DeliveryRepository deliveryRepo;
 	
+	@Autowired
+	private OrderRepository orderRepo;
 
 	@Override
 	public BaseResponse insert(Delivery delivery) {
@@ -139,6 +142,36 @@ public class DBDeliveryService implements IDeliveryService {
 
 		}
 
+	}
+
+
+	@Override
+	public BaseResponse addOrderToDelivery(String idDelivery, Order order) {
+		
+		Optional<Delivery> optionalDelivery = this.deliveryRepo.findById(idDelivery);
+		
+		Optional<Order> optionaOrder = this.orderRepo.findById(order.getId());
+		
+		if ( optionalDelivery != null && optionaOrder != null ) {
+		
+			Delivery consegna = optionalDelivery.get();
+			
+			Order ordine = optionaOrder.get();
+			
+			consegna.getOrdiniAssociati().add(ordine);
+			
+			this.deliveryRepo.save(consegna);
+			
+			ordine.setBoolConsegna(true);
+			
+			this.orderRepo.save(ordine);
+			
+			return new BaseResponse(200, null, "aggiornamento avvenuto con successo!" );
+		}
+		
+		System.out.println("---> Errore suDB-DeliveryService");
+		return new BaseResponse(400, null, "Errore nell'aggiornamentod della consegna o dell'ordine");
+		
 	}
 
 }
